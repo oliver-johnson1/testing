@@ -8,7 +8,7 @@ import util
 from transformers import DistilBertTokenizerFast
 from transformers import DistilBertForQuestionAnswering
 from transformers import AdamW
-from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline
+from transformers import AutoModelForQuestionAnswering, AutoTokenizer, pipeline, AutoModel
 import pickle
 from tensorboardX import SummaryWriter
 
@@ -278,7 +278,8 @@ def main():
     # tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
     print(args.model_name)
-    model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+    #model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+    model = AutoModel.from_pretrained(args.model_name)
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     if args.do_train:
