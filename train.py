@@ -277,7 +277,7 @@ def main():
     # model = DistilBertForQuestionAnswering.from_pretrained("distilbert-base-uncased")
     # tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
-    model_name = "deepset/roberta-base-squad2"
+    print(model_name)
     model = AutoModelForQuestionAnswering.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 

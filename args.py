@@ -22,5 +22,6 @@ def get_train_test_args():
     parser.add_argument('--sub-file', type=str, default='')
     parser.add_argument('--visualize-predictions', action='store_true')
     parser.add_argument('--eval-every', type=int, default=5000)
+    parser.add_argument('--model-name', type=str, default='deepset/roberta-base-squad2')
     args = parser.parse_args()
     return args
