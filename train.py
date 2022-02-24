@@ -277,9 +277,9 @@ def main():
     # model = DistilBertForQuestionAnswering.from_pretrained("distilbert-base-uncased")
     # tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
-    print(model_name)
-    model = AutoModelForQuestionAnswering.from_pretrained(model_name)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    print(args.model_name)
+    model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     if args.do_train:
         if not os.path.exists(args.save_dir):
