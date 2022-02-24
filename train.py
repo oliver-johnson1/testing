@@ -249,16 +249,19 @@ def get_dataset(args, datasets, data_dir, tokenizer, split_name):
     if data_dir == 'datasets/indomain_val':
         with open('dataset_dict_val.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
+        dataset_name='val'
         print('val------')
     elif data_dir == 'datasets/indomain_train':
         with open('dataset_dict_train.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
+        dataset_name='train'
         print('train------')
     elif data_dir == 'datasets/oodomain_test':
         with open('dataset_dict_test.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
+        dataset_name='test'
         print('test------')
-    dataset_name += f'_{datasets[0]}'
+    #dataset_name += f'_{datasets[0]}'
     #for dataset in datasets:
     #   
     #    dataset_dict_curr = util.read_squad(f'{data_dir}/{dataset}')
@@ -296,7 +299,7 @@ def main():
         val_loader = DataLoader(val_dataset,
                                 batch_size=args.batch_size,
                                 sampler=SequentialSampler(val_dataset))
-        #best_scores = trainer.train(model, train_loader, val_loader, val_dict)
+        best_scores = trainer.train(model, train_loader, val_loader, val_dict)
     if args.do_eval:
         args.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         split_name = 'test' if 'test' in args.eval_dir else 'validation'
