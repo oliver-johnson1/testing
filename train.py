@@ -278,8 +278,8 @@ def main():
     # tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
 
     print(args.model_name)
-    #model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
-    model = AutoModel.from_pretrained(args.model_name)
+    model = AutoModelForQuestionAnswering.from_pretrained(args.model_name)
+    #model = AutoModel.from_pretrained(args.model_name)
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     if args.do_train:
