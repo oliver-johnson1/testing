@@ -253,7 +253,6 @@ def get_dataset(args, datasets, data_dir, tokenizer, split_name):
     elif data_dir == 'datasets/indomain_train':
         with open('dataset_dict_train.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
-            dataset_dict['id']=['']
         print('train------')
     elif data_dir == 'datasets/oodomain_test':
         with open('dataset_dict_test.pickle', 'rb') as handle:
