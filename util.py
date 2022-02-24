@@ -317,7 +317,9 @@ def postprocess_qa_predictions(examples, features, predictions,
     example_id_to_index = {k: i for i, k in enumerate(examples["id"])}
     print(example_id_to_index)
     features_per_example = ddict(list)
+    print(features['id'])
     for i, feat_id in enumerate(features['id']):
+        print(feat_id)
         print(example_id_to_index[feat_id])
         features_per_example[example_id_to_index[feat_id]].append(i)
 
