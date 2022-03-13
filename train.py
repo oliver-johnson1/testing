@@ -247,17 +247,17 @@ def get_dataset(args, datasets, data_dir, tokenizer, split_name):
     dataset_dict = None
     dataset_name=''
     if data_dir == 'datasets/indomain_val':
-        with open('dataset_dict_val.pickle', 'rb') as handle:
+        with open('dataset_dict_val_reddit.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
         dataset_name='val'
         print('val------')
     elif data_dir == 'datasets/indomain_train':
-        with open('dataset_dict_train.pickle', 'rb') as handle:
+        with open('dataset_dict_train_reddit.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
         dataset_name='train'
         print('train------')
     elif data_dir == 'datasets/oodomain_test':
-        with open('dataset_dict_test.pickle', 'rb') as handle:
+        with open('dataset_dict_test_reddit.pickle', 'rb') as handle:
             dataset_dict = pickle.load(handle)
         dataset_name='test'
         print('test------')
