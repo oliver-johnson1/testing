@@ -310,7 +310,7 @@ def main():
         trainer = Trainer(args, log)
         checkpoint_path = os.path.join(args.save_dir, 'checkpoint')
         #model = DistilBertForQuestionAnswering.from_pretrained(checkpoint_path)
-        if(args.save_dir != 'save/unfinetuned'):
+        if(0):
             model = AutoModelForQuestionAnswering.from_pretrained(checkpoint_path)
         else:
             print('evalulating on unfinetuned')
@@ -324,9 +324,7 @@ def main():
                                                    split=split_name)
         results_str = ', '.join(f'{k}: {v:05.2f}' for k, v in eval_scores.items())
         log.info(f'Eval {results_str}')
-        # Write submission file
-        if not os.path.exists(args.save_dir):
-            os.makedirs(args.save_dir)
+
         sub_path = os.path.join(args.save_dir, split_name + '_' + args.sub_file)
         log.info(f'Writing submission file to {sub_path}...')
         with open(sub_path, 'w', newline='', encoding='utf-8') as csv_fh:
