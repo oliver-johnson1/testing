@@ -305,11 +305,15 @@ def main():
         args.device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
         split_name = 'test' if 'test' in args.eval_dir else 'validation'
         split_name = 'validation'
+        
         log = util.get_logger(args.save_dir, f'log_{split_name}')
         trainer = Trainer(args, log)
         checkpoint_path = os.path.join(args.save_dir, 'checkpoint')
         #model = DistilBertForQuestionAnswering.from_pretrained(checkpoint_path)
-        model = AutoModelForQuestionAnswering.from_pretrained(checkpoint_path)
+        if(args.save_dir != 'save/unfinetuned'):
+            model = AutoModelForQuestionAnswering.from_pretrained(checkpoint_path)
+        else:
+            print('evalulating on unfinetuned')
         model.to(args.device)
         eval_dataset, eval_dict = get_dataset(args, args.eval_datasets, args.eval_dir, tokenizer, split_name)
         eval_loader = DataLoader(eval_dataset,
@@ -321,6 +325,8 @@ def main():
         results_str = ', '.join(f'{k}: {v:05.2f}' for k, v in eval_scores.items())
         log.info(f'Eval {results_str}')
         # Write submission file
+        if not os.path.exists(args.save_dir):
+            os.makedirs(args.save_dir)
         sub_path = os.path.join(args.save_dir, split_name + '_' + args.sub_file)
         log.info(f'Writing submission file to {sub_path}...')
         with open(sub_path, 'w', newline='', encoding='utf-8') as csv_fh:
