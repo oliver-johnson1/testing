@@ -261,6 +261,11 @@ def get_dataset(args, datasets, data_dir, tokenizer, split_name):
             dataset_dict = pickle.load(handle)
         dataset_name='test'
         print('test------')
+    elif data_dir == 'datasets/fb_test':
+        with open('dataset_dict_test_fb.pickle', 'rb') as handle:
+            dataset_dict = pickle.load(handle)
+        dataset_name='test'
+        print('test fb------')
     #dataset_name += f'_{datasets[0]}'
     #for dataset in datasets:
     #   
