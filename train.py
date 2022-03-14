@@ -315,7 +315,7 @@ def main():
         trainer = Trainer(args, log)
         checkpoint_path = os.path.join(args.save_dir, 'checkpoint')
         #model = DistilBertForQuestionAnswering.from_pretrained(checkpoint_path)
-        if(0):
+        if(1):
             model = AutoModelForQuestionAnswering.from_pretrained(checkpoint_path)
         else:
             print('evalulating on unfinetuned')
